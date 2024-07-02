@@ -92,39 +92,9 @@ def main(args):
     elif 'compilora_mask' in args.config and not args.train_inference_task_only:
         import trainers.compilora_mask_trainer as compilora_mask_trainer
         compilora_mask_trainer.train(args)
-    elif 'compilora_drop' in args.config and not args.train_inference_task_only:
-        import trainers.compilora_drop_trainer as compilora_drop_trainer
-        compilora_drop_trainer.train(args)
     elif 'compilora' in args.config and not args.train_inference_task_only:
         import trainers.compilora_trainer as compilora_trainer
         compilora_trainer.train(args)
-    elif 'mllora' in args.config and not args.train_inference_task_only:
-        import trainers.mllora_trainer as mllora_trainer
-        mllora_trainer.train(args)
-    elif 'compadalora' in args.config and not args.train_inference_task_only:
-        import trainers.compadalora_trainer as compadalora_trainer
-        compadalora_trainer.train(args)
-    elif 'compadalora_single' in args.config and not args.train_inference_task_only:
-        import trainers.compadalora_single_trainer as compadalora_single_trainer
-        compadalora_single_trainer.train(args)
-    elif 'complora_tii' in args.config and not args.train_inference_task_only:
-        import trainers.complora_tii_trainer as complora_tii_trainer
-        complora_tii_trainer.train(args)
-    elif 'complora_single' in args.config and not args.train_inference_task_only:
-        import trainers.complora_single_trainer as complora_single_trainer
-        complora_single_trainer.train(args)
-    elif 'complora_wram' in args.config and not args.train_inference_task_only:
-        import trainers.complora_wram_trainer as complora_wram_trainer
-        complora_wram_trainer.train(args)
-    elif 'complora' in args.config and not args.train_inference_task_only:
-        import trainers.complora_trainer as complora_trainer
-        complora_trainer.train(args)
-    elif 'hidelora' in args.config and not args.train_inference_task_only:
-        import trainers.hidelora_trainer as hidelora_trainer
-        hidelora_trainer.train(args)
-    elif 'continual_lora' in args.config:
-        import trainers.continual_lora_trainer as continual_lora_trainer
-        continual_lora_trainer.train(args)
     else:
         raise NotImplementedError
 
