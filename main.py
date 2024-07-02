@@ -95,9 +95,6 @@ def main(args):
     elif 'compilora_drop' in args.config and not args.train_inference_task_only:
         import trainers.compilora_drop_trainer as compilora_drop_trainer
         compilora_drop_trainer.train(args)
-    elif 'compilora_replay' in args.config and not args.train_inference_task_only:
-        import trainers.compilora_replay_trainer as compilora_replay_trainer
-        compilora_replay_trainer.train(args)
     elif 'compilora' in args.config and not args.train_inference_task_only:
         import trainers.compilora_trainer as compilora_trainer
         compilora_trainer.train(args)
