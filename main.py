@@ -30,24 +30,12 @@ def get_args():
     config = parser.parse_known_args()[-1][0]
     subparser = parser.add_subparsers(dest='subparser_name')
     
-    if config == 'cifar100_compilora':
-        from configs.cifar100_compilora import get_args_parser
-        config_parser = subparser.add_parser('cifar100_compilora', help='Split-CIFAR100 CompILora configs')
-    elif config == 'cifar100_compilora_mask':
+    if config == 'cifar100_compilora_mask':
         from configs.cifar100_compilora_mask import get_args_parser
         config_parser = subparser.add_parser('cifar100_compilora_mask', help='Split-CIFAR100 CompILora-mask configs')
     elif config == 'cifar100_compilora_mask_tii':
         from configs.cifar100_compilora_mask_tii import get_args_parser
         config_parser = subparser.add_parser('cifar100_compilora_mask_tii', help='Split-CIFAR100 CompILora-mask-TII configs')
-    elif config == 'cifar100_compilora_replay':
-        from configs.cifar100_compilora_replay import get_args_parser
-        config_parser = subparser.add_parser('cifar100_compilora_replay', help='Split-CIFAR100 CompILora-replay configs')
-    elif config == 'five_datasets_complora_single':
-        from configs.five_datasets_complora_single import get_args_parser
-        config_parser = subparser.add_parser('five_datasets_complora_single', help='five datasets Complora-Single configs')
-    elif config == 'five_datasets_compilora':
-        from configs.five_datasets_compilora import get_args_parser
-        config_parser = subparser.add_parser('five_datasets_compilora', help='five datasets CompILora configs')
     elif config == 'five_datasets_compilora_mask':
         from configs.five_datasets_compilora_mask import get_args_parser
         config_parser = subparser.add_parser('five_datasets_compilora_mask', help='five datasets CompILora-mask configs')
@@ -57,30 +45,9 @@ def get_args():
     elif config == 'imr_compilora_mask_tii':
         from configs.imr_compilora_mask_tii import get_args_parser
         config_parser = subparser.add_parser('imr_compilora_mask_tii', help='Split-ImageNet-R CompILora-mask configs')
-    elif config == 'imr_complora':
-        from configs.imr_complora import get_args_parser
-        config_parser = subparser.add_parser('imr_complora', help='Split-ImageNet-R Complora configs')
-    elif config == 'imr_complora_single':
-        from configs.imr_complora_single import get_args_parser
-        config_parser = subparser.add_parser('imr_complora_single', help='Split-ImageNet-R Complora Single configs')
-    elif config == 'cifar100_complora_single':
-        from configs.cifar100_complora_single import get_args_parser
-        config_parser = subparser.add_parser('cifar100_complora_single', help='Split-CIFAR100 Complora-Single configs')
-    elif config == 'cifar100_complora_wram':
-        from configs.cifar100_complora_wram import get_args_parser
-        config_parser = subparser.add_parser('cifar100_complora_wram', help='Split-CIFAR100 Complora-WRAM configs')
-    elif config == 'cifar100_complora_tii':
-        from configs.cifar100_complora_tii import get_args_parser
-        config_parser = subparser.add_parser('cifar100_complora_tii', help='Split-CIFAR100 Complora-TII configs')
-    elif config == 'imr_complora_tii':
-        from configs.imr_complora_tii import get_args_parser
-        config_parser = subparser.add_parser('imr_complora_tii', help='Split-ImageNet-R Complora-TII configs')
-    elif config == 'five_datasets_complora_tii':
-        from configs.five_datasets_complora_tii import get_args_parser
-        config_parser = subparser.add_parser('five_datasets_complora_tii', help='five datasets Complora-TII configs')
-    elif config == 'cifar100_complora':
-        from configs.cifar100_complora import get_args_parser
-        config_parser = subparser.add_parser('cifar100_complora', help='Split-CIFAR100 Complora configs')
+    elif config == 'imr_compilora_mask':
+        from configs.imr_compilora_mask import get_args_parser
+        config_parser = subparser.add_parser('imr_compilora_mask', help='Split-ImageNet-R CompILora-mask configs')
     else:
         raise NotImplementedError
 
