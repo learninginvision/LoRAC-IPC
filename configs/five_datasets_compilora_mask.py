@@ -117,9 +117,6 @@ def get_args_parser(subparsers):
     subparsers.add_argument('--ca_storage_efficient_method', default='multi-centroid', choices=['covariance', 'multi-centroid', 'variance'], type=str)
     subparsers.add_argument('--n_centroids', default=10, type=int)
 
-
-    subparsers.add_argument('--train_inference_task_only', action='store_true')
-
     # Misc parameters
     subparsers.add_argument('--print_freq', type=int, default=10, help = 'The frequency of printing')
 

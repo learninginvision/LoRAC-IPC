@@ -41,11 +41,7 @@ from timm.models.helpers import build_model_with_cfg, resolve_pretrained_cfg, na
     checkpoint_seq
 from timm.models.layers import PatchEmbed, DropPath, trunc_normal_, lecun_normal_
 from timm.models.registry import register_model
-# from peft.lora.comp_ilora_mask import CompILoraPool
-# from peft.lora.comp_ilora_mask_v2 import CompILoraPool
-# from peft.lora.comp_ilora_mask_dw import CompILoraPool
 from peft.lora.comp_ilora_mask_allw import CompILoraPool
-# from peft.lora.comp_ilora_mask_dw_newth import CompILoraPool
 from timm.models.layers.helpers import to_2tuple
 
 _logger = logging.getLogger(__name__)
