@@ -60,6 +60,13 @@ def train(args):
             else:
                 print('No checkpoint found at:', checkpoint_path)
                 return
+            
+            _compute_mean(model=model, data_loader=data_loader_per_cls, device=device, task_id=task_id,
+                          class_mask=class_mask[task_id], args=args)
+            
+            if task_id > 0 and not args.not_train_ca:
+               train_task_adaptive_prediction(model, args, device, class_mask, task_id)
+
 
             _ = evaluate_till_now(model, data_loader, device, task_id, class_mask, target_task_map, acc_matrix, args, )
 

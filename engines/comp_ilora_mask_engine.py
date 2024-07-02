@@ -278,8 +278,8 @@ def train_and_evaluate(model: torch.nn.Module, model_without_ddp: torch.nn.Modul
         model_without_ddp.after_task(task_id=task_id, device=device, args=args)
         
         # compute mean and variance
-        _compute_mean(model=model, data_loader=data_loader_per_cls, device=device, task_id=task_id,
-                      class_mask=class_mask[task_id], args=args)
+        # _compute_mean(model=model, data_loader=data_loader_per_cls, device=device, task_id=task_id,
+        #               class_mask=class_mask[task_id], args=args)
 
 
         if args.output_dir and utils.is_main_process():
@@ -307,7 +307,7 @@ def train_and_evaluate(model: torch.nn.Module, model_without_ddp: torch.nn.Modul
         
         if task_id > 0 and not args.not_train_ca:
             
-            train_task_adaptive_prediction(model_without_ddp, args, device, class_mask, task_id)
+            # train_task_adaptive_prediction(model_without_ddp, args, device, class_mask, task_id)
             
             test_stats, metric_info = evaluate_till_now(model=model, data_loader=data_loader,
                                                         device=device,

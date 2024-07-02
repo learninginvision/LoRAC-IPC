@@ -109,7 +109,7 @@ def get_args_parser(subparsers):
     subparsers.add_argument('--freeze', default=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], nargs='*', type=list, help='freeze part in backbone model')
 
 
-    subparsers.add_argument('--crct_epochs', default=30, type=int)
+    subparsers.add_argument('--crct_epochs', default=50, type=int)
     subparsers.add_argument('--train_inference_task_only', action='store_true')
     subparsers.add_argument('--ca_lr', default=0.005, type=float)
     subparsers.add_argument('--reg', default=0.01, type=float)
