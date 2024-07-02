@@ -4,11 +4,7 @@ from timm.scheduler import create_scheduler
 from timm.optim import create_optimizer
 import time, datetime, os, sys, random, numpy as np
 from datasets import build_continual_dataloader
-# from peft.lora.comp_ilora import CompILoraPool
-# from peft.lora.comp_ilora_mask_v2 import CompILoraPool
 from engines.comp_ilora_tii_mask_engine import train_and_evaluate, _compute_mean, evaluate_till_now, _compute_tii_mean, train_task_adaptive_prediction, cls_mean, cls_cov, tii_mean, tii_cov, tii_shrink_cov
-# import vits.comp_ilora_mask_vision_transformer as comp_ilora_vision_transformer
-# from engines.comp_ilora_mask_engine import evaluate_till_now
 import vits.comp_ilora_mask_allw_vision_transformer as comp_ilora_vision_transformer
 
 

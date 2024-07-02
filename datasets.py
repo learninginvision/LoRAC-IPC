@@ -48,10 +48,8 @@ def build_continual_dataloader(args):
     target_task_map = dict()
     
     if 'cifar' in args.dataset.lower() and args.model == 'vit_base_patch16_224':
-        transform_train = build_cifar_transform_noreplay(True, args)
-        transform_val = build_cifar_transform_noreplay(False, args)
-        # transform_train = build_cifar_transform(True, args)
-        # transform_val = build_cifar_transform(False, args)
+        transform_train = build_cifar_transform(True, args)
+        transform_val = build_cifar_transform(False, args)
     else:
         transform_train = build_transform(True, args)
         transform_val = build_transform(False, args)
@@ -224,6 +222,10 @@ def get_dataset(dataset, transform_train, transform_val, args, target_transform=
         dataset_val = Imagenet_R(args.data_path, train=False, download=True, transform=transform_val).data
         # dataset_train = ImageNetR(args.data_path, train=True, download=True)
         # dataset_val = ImageNetR(args.data_path, train=False, download=True)
+    elif dataset == 'DomainNet':
+        dataset_train = DomainNet(args.data_path, train=True, download=True, transform=transform_train)
+        dataset_val = DomainNet(args.data_path, train=False, download=True, transform=transform_val)
+
     else:
         raise ValueError('Dataset {} not found.'.format(dataset))
 

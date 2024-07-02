@@ -555,7 +555,7 @@ def _compute_tii_mean(model: torch.nn.Module, data_loader: Iterable, device: tor
         from sklearn.cluster import KMeans
         if args.dataset == 'Split-Imagenet-R':
             n_clusters = 2
-            print("n_clusters: 2")
+            # print("n_clusters: 2")
         else:
             n_clusters = 4
         kmeans = KMeans(n_clusters=n_clusters, n_init='auto')
@@ -594,17 +594,6 @@ def shrink_cov(cov_list):
         shrink_cov_list.append(shrink_cov)
     return shrink_cov_list
 
-# def shrink_cov(cov):
-#     diag_mean = torch.mean(torch.diag(cov))
-#     off_diag = cov.clone()
-#     off_diag.fill_diagonal_(0.0)
-#     mask = off_diag != 0.0
-#     off_diag_mean = (off_diag*mask).sum() / mask.sum()
-#     iden = torch.eye(cov.shape[0]).to(cov.device)
-#     alpha1 = 1
-#     alpha2  = 0
-#     cov_ = cov + (alpha1*diag_mean*iden) + (alpha2*off_diag_mean*(1-iden))
-#     return cov_
 
 def train_task_adaptive_prediction(model: torch.nn.Module, args, device, class_mask=None, task_id=-1):
     model.train()

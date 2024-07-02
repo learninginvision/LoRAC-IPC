@@ -48,6 +48,12 @@ def get_args():
     elif config == 'imr_compilora_mask':
         from configs.imr_compilora_mask import get_args_parser
         config_parser = subparser.add_parser('imr_compilora_mask', help='Split-ImageNet-R CompILora-mask configs')
+    elif config == 'domainnet_compilora_mask':
+        from configs.domainnet_compilora_mask import get_args_parser
+        config_parser = subparser.add_parser('domainnet_compilora_mask', help='DomainNet CompILora-mask configs')
+    elif config == 'domainnet_compilora_mask_dil':
+        from configs.domainnet_compilora_mask_tii import get_args_parser
+        config_parser = subparser.add_parser('domainnet_compilora_mask_dil', help='DomainNet CompILora-mask-dil configs')
     else:
         raise NotImplementedError
 

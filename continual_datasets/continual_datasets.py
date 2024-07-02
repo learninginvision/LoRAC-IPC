@@ -20,10 +20,7 @@ from PIL import Image
 
 from .dataset_utils import read_image_file, read_label_file
 
-# from continuum.datasets import ImageFolderDataset, _ContinuumDataset
-# from continuum.download import download, untar
-# from continuum.tasks import TaskType
-# from torchvision import transforms
+import yaml
 
 class MNIST_RGB(datasets.MNIST):
 
@@ -774,7 +771,7 @@ class Imagenet_R(torch.utils.data.Dataset):
             rmtree(path)
 
 
-class DomainNet(torch.utils.data.Dataset):
+class DomainNet_DIL(torch.utils.data.Dataset):
     def __init__(self, root, train=True, transform=None, target_transform=None, download=False):
         self.root = os.path.expanduser(root)
         self.transform = transform
@@ -826,7 +823,40 @@ class DomainNet(torch.utils.data.Dataset):
     def __len__(self):
         return len(self.targets)
     
+class DomainNet(torch.utils.data.Dataset):
+    def __init__(self, root, train=True, transform=None, target_transform=None, download=False):
+        self.root = os.path.expanduser(root)
+        self.transform = transform
+        self.target_transform=target_transform
+        self.train = train
+        self.domain_names = ["clipart", "infograph", "painting", "quickdraw", "real", "sketch", ]
+        
+        if self.train:
+            train_data_config = yaml.load(open('continual_datasets/splits/domainnet_train.yaml', 'r'), Loader=yaml.Loader)
+            self.data = np.array(train_data_config['data'])
+            self.targets = np.array(train_data_config['targets'])
+            print("Finish downloading training datasets")
+        else:
+            test_data_config = yaml.load(open('continual_datasets/splits/domainnet_test.yaml', 'r'), Loader=yaml.Loader)
+            self.data = np.array(test_data_config['data'])
+            self.targets = np.array(test_data_config['targets'])
+            print("Finish downloading testing datasets")
+            
+        self.classes = [i for i in range(345)]
 
+    def __getitem__(self, idx):
+        with open(self.data[idx], 'rb') as f:
+            image = Image.open(f).convert('RGB')
+        if self.transform is not None:
+            image = self.transform(image)
+            
+        target = self.targets[idx]
+        if self.target_transform is not None:
+            target = self.target_transform(target)
+        return image, target
+    
+    def __len__(self):
+        return len(self.targets)
 # class Imagenet_R(torch.utils.data.Dataset):
 #     def __init__(self, root, train=True, transform=None, target_transform=None, download=False):        
 #         self.root = os.path.expanduser(root)
