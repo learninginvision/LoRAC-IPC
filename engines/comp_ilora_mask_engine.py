@@ -305,19 +305,19 @@ def train_and_evaluate(model: torch.nn.Module, model_without_ddp: torch.nn.Modul
         # current_model_copy = deepcopy(model_without_ddp)
         current_model_copy = model_without_ddp
         
-        if task_id > 0 and not args.not_train_ca:
+        # if task_id > 0 and not args.not_train_ca:
             
-            # train_task_adaptive_prediction(model_without_ddp, args, device, class_mask, task_id)
+        #     # train_task_adaptive_prediction(model_without_ddp, args, device, class_mask, task_id)
             
-            test_stats, metric_info = evaluate_till_now(model=model, data_loader=data_loader,
-                                                        device=device,
-                                                        task_id=task_id, class_mask=class_mask, target_task_map=target_task_map,
-                                                        acc_matrix=acc_matrix, args=args)
-        else:
-            test_stats, metric_info = evaluate_till_now(model=model, data_loader=data_loader,
-                                                        device=device,
-                                                        task_id=task_id, class_mask=class_mask, target_task_map=target_task_map,
-                                                        acc_matrix=acc_matrix, args=args)
+        #     test_stats, metric_info = evaluate_till_now(model=model, data_loader=data_loader,
+        #                                                 device=device,
+        #                                                 task_id=task_id, class_mask=class_mask, target_task_map=target_task_map,
+        #                                                 acc_matrix=acc_matrix, args=args)
+        # else:
+        test_stats, metric_info = evaluate_till_now(model=model, data_loader=data_loader,
+                                                    device=device,
+                                                    task_id=task_id, class_mask=class_mask, target_task_map=target_task_map,
+                                                    acc_matrix=acc_matrix, args=args)
 
         if args.output_dir and utils.is_main_process():
             Path(os.path.join(args.output_dir, 'checkpoint')).mkdir(parents=True, exist_ok=True)
