@@ -66,3 +66,51 @@ In addition, if you do not want to modify the code, please store the dataset in 
     └── clipart
 ```
 Following previous work, the files used to divide DomainNet have been placed under the path `./continual_datasets/splits`.
+
+##  💻 Training
+Run the following command to train the model sequentially:
+
+
+```shell
+bash ./training_scripts/train_{dataset}_vit_compilora_mask_{ptm}.sh
+```
+- `{dataset}`: The name of the dataset. (e.g. `cifar100`)
+- `{ptm}`: The name of the pre-trained model. (e.g. `in21k`)
+
+
+Additionally, the hyperparameters for training the model can be adjusted in the `./training_scripts/*.sh` file.
+
+After training, you can get model checkpoints in the folder `./output/exp_name/checkpoints`, where `exp_name` is the name of the experiment including different hyperparameters.
+
+## 📊 Evaluation
+After completing training, the model's performance can be tested using the following command:
+
+
+Without Task ID inference
+```shell
+bash ./testing_scripts/test_{dataset}_vit_compilora_{ptm}.sh
+```
+With Task ID inference
+```shell
+bash ./testing_scripts/test_{dataset}_vit_compilora_tii_{ptm}.sh
+```
+
+The result will be saved in the folder `./output/exp_name/eval_summary.txt`.
+
+## 📈 Results
+
+<div align="center">
+<img align="middle" width="500" src="figures/results.png">
+
+*Results on Split CIFAR-100 and Split ImageNet-R in rehearsal-free class-incremental learning.*
+</div>
+
+## 📜 Acknowledgments
+
+This code is built upon [thu-ml/HiDe-Prompt](https://github.com/thu-ml/HiDe-Prompt/), and refers to the following four projects:
+
+[1] [L2P](https://github.com/JH-LEE-KR/l2p-pytorch)
+
+[2] [Dual-Prompt](https://github.com/JH-LEE-KR/dualprompt-pytorch)
+
+We thank the authors for releasing their code.
