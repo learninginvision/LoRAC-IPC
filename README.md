@@ -1,8 +1,8 @@
-# :page_with_curl: A Close Look at Important Parameter Changes in Continual Learning under Orthogonal LoRA Tuning
+# :page_with_curl: LoRA-Based Continual Learning with Constraints on Critical Parameter Changes
 
 This is the *Pytorch Implementation* for the paper:
 
-> **A Close Look at Important Parameter Changes in Continual Learning under Orthogonal LoRA Tuning** <br>Shimou Ling, Liang Zhang, Jiangwei Zhao, Lili Pan, Hongliang Li <br>
+> **LoRA-Based Continual Learning with Constraints on Critical Parameter Changes** <br>Shimou Ling, Liang Zhang, Jiangwei Zhao, Lili Pan, Hongliang Li <br>
 > Pattern Recognition (submitted)
 
 > **Abstract**:  LoRA-based continual learning represents a promising avenue for leveraging pre-trained models in downstream continual learning tasks. Recent studies have shown that orthogonal LoRA tuning effectively mitigates forgetting. However, this work unveils that the superabundance of potential orthogonal solutions in extremely high-dimensional parameter space can lead to sub-optimal solutions. To address this problem, we propose freezing the most critical parameter matrices in the Vision Transformer (ViT) for pre-tasks before learning post-tasks, defining parameter importance by their sensitivity to the training loss. Furthermore, we propose orthogonal LoRA composition (LoRAC) based on QR decomposition, which may enhance the plasticity of our method. Elaborate ablation studies and extensive comparisons demonstrate the effectiveness of our proposed method. Our results indicate that our method achieves state-of-the-art (SOTA) performance on several well-known continual learning benchmarks. For instance, on the Split CIFAR-100 dataset, our method shows a 6.35% improvement in accuracy and a 3.24% reduction in forgetting compared to previous methods.
