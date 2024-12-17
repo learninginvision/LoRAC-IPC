@@ -659,7 +659,7 @@ def train_task_adaptive_prediction(model: torch.nn.Module, args, device, class_m
         inputs = sampled_data
         targets = sampled_label
 
-        sf_indexes = torch.randperm(inputs.size(0))
+        sf_indexes = torch.randperm(inputs.size(0)) # shuffle
         inputs = inputs[sf_indexes]
         targets = targets[sf_indexes]
         # print(targets)

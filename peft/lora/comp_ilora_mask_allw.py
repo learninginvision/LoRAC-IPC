@@ -191,7 +191,7 @@ class CompILoraPool(nn.Module):
                 else:
                     q = (q_his_with_omegas + self.q_lora_A[task_id, depth_id] @ self.q_lora_B[task_id, depth_id]) * self.scaling
                     k = (k_his_with_omegas + self.k_lora_A[task_id, depth_id] @ self.k_lora_B[task_id, depth_id]) * self.scaling
-                    v = (q_his_with_omegas + self.v_lora_A[task_id, depth_id] @ self.v_lora_B[task_id, depth_id]) * self.scaling
+                    v = (v_his_with_omegas + self.v_lora_A[task_id, depth_id] @ self.v_lora_B[task_id, depth_id]) * self.scaling
     
                 w = torch.cat([q.to(device), k.to(device), v.to(device)], dim=-1)
             elif position == 'out':
@@ -557,3 +557,12 @@ class CompILoraPool(nn.Module):
                 omegas[attr_name] = getattr(self, attr_name+'_O').data
         
         return omegas
+    
+    def get_lora_mask(self):
+        lora_mask = {}
+        for attr_name in self.attributes:
+            cond = getattr(self, attr_name)
+            if cond:
+                lora_mask[attr_name] = getattr(self, attr_name+'_M').cpu().numpy()
+        
+        return lora_mask
