@@ -36,7 +36,7 @@ def load_args_from_yaml(input_file):
         setattr(args, key, value)
     return args
 
-exp_path = '//data_8T/ling/comp-lorav7/cifar100_output_tii/sup-21k/all/05-14-00-44-25_lr_0.02_bs_64_epochs_20_rank_32_ortho_1.0_omega_lr_scale0.1_TH0.05'
+exp_path = '/data_8T/ling/comp-lorav7/cifar100_output_tii/sup-21k/all/bw/05-14-09-04-34_lr_0.02_bs_64_epochs_20_rank_32_ortho_1.0_omega_lr_scale0.1_TH0.05'
 config_path = os.path.join(exp_path, 'config.yaml')
 
 args = load_args_from_yaml(config_path)
